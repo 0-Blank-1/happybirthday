@@ -3,575 +3,145 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🎁 A Special Message</title>
+  <title>🎁 A Special Birthday Message</title>
   <link rel="stylesheet" href="styles/style.css" />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Surprise!</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-    <style id="app-style">
-        body {
-            font-family: 'Montserrat', sans-serif;
-            overflow-x: hidden;
-            background: linear-gradient(135deg, #fce4ec 0%, #e3f2fd 50%, #f3e5f5 100%);
-            min-height: 100vh;
-        }
-        .cursive {
-            font-family: 'Dancing Script', cursive;
-        }
-        .page {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .page.hidden {
-            transform: translateX(100%);
-            opacity: 0;
-            pointer-events: none;
-        }
-        .balloon {
-            position: absolute;
-            width: 40px;
-            height: 50px;
-            border-radius: 50%;
-            animation: float 15s infinite linear;
-        }
-        @keyframes float {
-            0% { transform: translate(0, 100vh) rotate(0deg); }
-            100% { transform: translate(var(--translate-x), -200px) rotate(var(--rotate)); }
-        }
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            opacity: 0;
-            animation: confetti-fall 3s ease-in-out forwards;
-        }
-        @keyframes confetti-fall {
-            0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(calc(100vh + 50px)) rotate(360deg); opacity: 0; }
-        }
-        .heart {
-            position: absolute;
-            animation: heart-float 5s ease-in-out infinite;
-            opacity: 0;
-        }
-        @keyframes heart-float {
-            0% { transform: translate(0, 0) scale(0); opacity: 0; }
-            20% { opacity: 0.9; }
-            100% { transform: translate(var(--translate-x), var(--translate-y)) scale(1); opacity: 0; }
-        }
-        .capybara-container {
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-        .capybara-container:hover {
-            transform: scale(1.05);
-        }
-        .gift-card {
-            transition: transform 0.3s ease;
-        }
-        .capybara-container:hover .gift-card {
-            transform: translateY(-5px) rotate(2deg);
-        }
-        .hidden-heart {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            opacity: 0.3;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            cursor: pointer;
-            z-index: 100;
-        }
-        .hidden-heart:hover {
-            opacity: 1;
-            transform: scale(1.2);
-        }
-        .slide-container {
-            width: 100%;
-            max-width: 600px;
-            height: 300px;
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        .slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.5s ease;
-            background-color: #f8f9fa;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .music-player {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background-color: rgba(255,255,255,0.8);
-            padding: 8px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            max-height: 60px;
-            overflow: hidden;
-        }
-        .music-player.expanded {
-            max-height: 160px;
-        }
-        .upload-area {
-            border: 2px dashed #c9a0dc;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            background-color: rgba(255,255,255,0.8);
-            transition: all 0.3s ease;
-        }
-        .upload-area:hover, .upload-area.dragover {
-            background-color: rgba(255,255,255,1);
-            border-color: #9c27b0;
-        }
-        .btn-back {
-            transition: transform 0.3s ease;
-        }
-        .btn-back:hover {
-            transform: translateX(-5px);
-        }
-    </style>
+  <style>
+    /* 🎨 Gradient background for a birthday theme */
+    body.message {
+      background: linear-gradient(135deg, #fddde6, #c9e8ff);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* 🎈 Confetti animation */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: var(--color);
+      top: -10px;
+      animation: fall 6s linear infinite;
+      opacity: 0.8;
+      border-radius: 50%;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0.9;
+      }
+    }
+
+    /* 🎂 Floating balloons and cakes */
+    .floating {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      animation: float 10s ease-in-out infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-30px) rotate(10deg); }
+      100% { transform: translateY(0) rotate(-10deg); }
+    }
+
+    /* 🍰 Message layout */
+    .message-container {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .message-photo {
+      width: 250px;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+      margin: 20px 0;
+    }
+
+    /* 💌 Birthday message box */
+    .message-box {
+      background: rgba(255, 255, 255, 0.7);
+      border: 2px solid #ffd6e8;
+      border-radius: 20px;
+      padding: 25px;
+      width: 80%;
+      max-width: 600px;
+      box-shadow: 0 4px 15px rgba(255, 182, 193, 0.4);
+      color: #444;
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .back-btn {
+      margin-top: 25px;
+      background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .back-btn:hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
-  
+<body class="message">
 
-<body class="relative">
-   
-    <div id="giftPage" class="page hidden px-4">
-        <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8 w-full">
-            <h2 class="cursive text-3xl text-pink-600 mb-4 text-center">My Dearest <span id="nameDisplay">Love</span>,</h2>
-            
-            <div class="mb-4">
-                <label for="birthdayMessage" class="block text-pink-700 mb-2">Customize your message:</label>
-                <textarea id="birthdayMessage" rows="5" class="w-full p-3 border border-pink-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400" placeholder="Write your heartfelt birthday message here...">Happy Birthday BebBYYY!!!
-I hope your every day goes awesomelyy!
-i am always here for u, no matter what happens me shall be by ur side!!
-life is full of clouds and rains, but me loves those seasons!😤
-once again, many many happy returns of the day!!💕💖💞</textarea>
-            </div>
-            
-                       
-            <button id="backToMain" class="btn-back mt-4 w-full py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-full shadow-md hover:shadow-lg transition-all">
-                <i class="fas fa-arrow-left mr-2"></i> Back to Surprise
-            </button>
-        </div>
+  <!-- 🎉 Confetti elements generated with JS -->
+  <div id="confetti-container"></div>
+
+  <!-- 🎂 Floating cakes & balloons -->
+  <img src="https://cdn-icons-png.flaticon.com/512/1997/1997928.png" class="floating" style="top:10%; left:10%;" alt="balloon">
+  <img src="https://cdn-icons-png.flaticon.com/512/3876/3876658.png" class="floating" style="top:15%; right:15%;" alt="cake">
+  <img src="https://cdn-icons-png.flaticon.com/512/1997/1997912.png" class="floating" style="bottom:10%; left:20%;" alt="balloon">
+  <img src="https://cdn-icons-png.flaticon.com/512/3876/3876631.png" class="floating" style="bottom:15%; right:10%;" alt="cake">
+
+  <div class="message-container">
+    <h1>🎉 Happy Birthday, Sangay!!💖</h1>
+
+    <img src="images/birthday_pic.jpg" alt="Birthday" class="message-photo" />
+
+    <div class="message-box">
+      <p>
+        Wishing you a magical day full of smiles, laughter, and sweet surprises 🎂  
+        May your year ahead sparkle with joy and your dreams come true 🌟  
+        You’re amazing and deserve the world — happy birthday once again! 💕
+      </p>
     </div>
-    
-    <!-- Hidden "I Love You" button -->
-    <div class="hidden-heart">
-        <i class="fas fa-heart text-3xl text-pink-500"></i>
-    </div>
-    
-    
 
-    <script id="app-script">
-        // DOM elements
-        const mainPage = document.getElementById('mainPage');
-        const giftPage = document.getElementById('giftPage');
-        const capybaraContainer = document.querySelector('.capybara-container');
-        const nameInput = document.getElementById('gfName');
-        const birthdayHeading = document.getElementById('birthdayHeading');
-        const nameDisplay = document.getElementById('nameDisplay');
-        const hiddenHeart = document.querySelector('.hidden-heart');
-        const musicPlayer = document.getElementById('musicPlayer');
-        const toggleMusic = document.getElementById('toggleMusic');
-        const audioPlayer = document.getElementById('audioPlayer');
-        const musicIcon = document.getElementById('musicIcon');
-        const togglePlayerExpand = document.getElementById('togglePlayerExpand');
-        const playerExpandedContent = document.querySelector('.player-expanded-content');
-        const volumeControl = document.getElementById('volumeControl');
-        const musicUpload = document.getElementById('musicUpload');
-        const backToMain = document.getElementById('backToMain');
-        const birthdayMessage = document.getElementById('birthdayMessage');
-        const photoUpload = document.getElementById('photoUpload');
-        const uploadArea = document.getElementById('uploadArea');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const toggleAutoplay = document.getElementById('toggleAutoplay');
-        const slideContainer = document.querySelector('.slide-container');
-        const noPhotosMessage = document.getElementById('noPhotosMessage');
+    <audio id="birthdaySong" autoplay loop>
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg" />
+    </audio>
 
-        // State variables
-        let currentSlide = 0;
-        let slides = [];
-        let autoplayInterval = null;
-        let isAutoplayOn = false;
+    <button onclick="window.location.href='index.html'" class="back-btn">⬅ Back</button>
+  </div>
 
-        // Load saved data from localStorage
-        function loadSavedData() {
-            const savedName = localStorage.getItem('birthdayName');
-            const savedMessage = localStorage.getItem('birthdayMessage');
-            const savedPhotos = localStorage.getItem('birthdayPhotos');
-            
-            if (savedName) {
-                nameInput.value = savedName;
-                updateName();
-            }
-            
-            if (savedMessage) {
-                birthdayMessage.value = savedMessage;
-            }
-            
-            if (savedPhotos) {
-                try {
-                    const photoUrls = JSON.parse(savedPhotos);
-                    photoUrls.forEach(url => {
-                        addPhotoSlide(url);
-                    });
-                    
-                    if (slides.length > 0) {
-                        noPhotosMessage.classList.add('hidden');
-                        updateSlideButtons();
-                        showSlide(0);
-                    }
-                } catch (e) {
-                    console.error('Error loading saved photos:', e);
-                }
-            }
-        }
-
-        // Save data to localStorage
-        function saveData(key, value) {
-            localStorage.setItem(key, value);
-        }
-
-        // Create balloons
-        function createBalloons() {
-            const colors = ['#f8bbd0', '#bbdefb', '#e1bee7', '#ffcdd2', '#b3e5fc'];
-            const container = document.body;
-            
-            for (let i = 0; i < 15; i++) {
-                const balloon = document.createElement('div');
-                balloon.classList.add('balloon');
-                
-                // Determine if this balloon should have a heart
-                const hasHeart = Math.random() < 0.3;
-                
-                balloon.style.background = hasHeart 
-                    ? `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff4081" width="24px" height="24px"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') center/50% no-repeat ${colors[Math.floor(Math.random() * colors.length)]}`
-                    : colors[Math.floor(Math.random() * colors.length)];
-                
-                balloon.style.left = `${Math.random() * 100}%`;
-                balloon.style.bottom = `-${50 + Math.random() * 100}px`;
-                balloon.style.setProperty('--translate-x', `${(Math.random() * 200) - 100}px`);
-                balloon.style.setProperty('--rotate', `${(Math.random() * 360)}deg`);
-                balloon.style.animationDuration = `${15 + Math.random() * 30}s`;
-                balloon.style.animationDelay = `${Math.random() * 30}s`;
-                
-                container.appendChild(balloon);
-            }
-        }
-
-        // Create confetti effect
-        function createConfetti() {
-            const colors = ['#f8bbd0', '#bbdefb', '#e1bee7', '#b39ddb', '#ffcdd2', '#b3e5fc'];
-            const shapes = ['circle', 'square', 'triangle'];
-            const container = document.body;
-            
-            for (let i = 0; i < 100; i++) {
-                const confetti = document.createElement('div');
-                confetti.classList.add('confetti');
-                
-                const shape = shapes[Math.floor(Math.random() * shapes.length)];
-                const color = colors[Math.floor(Math.random() * colors.length)];
-                
-                if (shape === 'circle') {
-                    confetti.style.borderRadius = '50%';
-                } else if (shape === 'triangle') {
-                    confetti.style.width = '0';
-                    confetti.style.height = '0';
-                    confetti.style.borderLeft = '5px solid transparent';
-                    confetti.style.borderRight = '5px solid transparent';
-                    confetti.style.borderBottom = `10px solid ${color}`;
-                    confetti.style.background = 'transparent';
-                }
-                
-                confetti.style.backgroundColor = shape !== 'triangle' ? color : 'transparent';
-                confetti.style.left = `${Math.random() * 100}%`;
-                confetti.style.top = '0';
-                confetti.style.animationDuration = `${3 + Math.random() * 2}s`;
-                confetti.style.animationDelay = `${Math.random() * 5}s`;
-                
-                container.appendChild(confetti);
-                
-                // Remove confetti element after animation completes
-                setTimeout(() => {
-                    confetti.remove();
-                }, 8000);
-            }
-        }
-
-        // Create heart animation effect
-        function createHeartEffect() {
-            const container = document.body;
-            
-            for (let i = 0; i < 30; i++) {
-                const heart = document.createElement('div');
-                heart.classList.add('heart');
-                heart.innerHTML = `<i class="fas fa-heart" style="color: #ff4081; font-size: ${10 + Math.random() * 20}px;"></i>`;
-                
-                heart.style.left = `${Math.random() * 100}%`;
-                heart.style.top = `${Math.random() * 100}%`;
-                heart.style.setProperty('--translate-x', `${(Math.random() * 200) - 100}px`);
-                heart.style.setProperty('--translate-y', `${(Math.random() * 200) - 100}px`);
-                heart.style.animationDuration = `${3 + Math.random() * 2}s`;
-                
-                container.appendChild(heart);
-                
-                // Remove heart element after animation completes
-                setTimeout(() => {
-                    heart.remove();
-                }, 5000);
-            }
-        }
-
-        // Update the displayed name
-        function updateName() {
-            const name = nameInput.value.trim() || 'Love';
-            birthdayHeading.textContent = `Happy Birthday, ${name}!`;
-            nameDisplay.textContent = name;
-            saveData('birthdayName', name);
-        }
-
-        // Handle page transition
-        function showGiftPage() {
-            mainPage.classList.add('hidden');
-            giftPage.classList.remove('hidden');
-        }
-
-        function showMainPage() {
-            giftPage.classList.add('hidden');
-            mainPage.classList.remove('hidden');
-        }
-
-        // Photo slideshow functions
-        function addPhotoSlide(photoUrl) {
-            const slide = document.createElement('div');
-            slide.classList.add('slide');
-            slide.style.transform = `translateX(${100 * slides.length}%)`;
-            
-            const img = document.createElement('img');
-            img.src = photoUrl;
-            img.style.maxWidth = '100%';
-            img.style.maxHeight = '100%';
-            img.style.objectFit = 'contain';
-            
-            slide.appendChild(img);
-            slideContainer.appendChild(slide);
-            
-            slides.push(slide);
-            savePhotos();
-            
-            return slide;
-        }
-
-        function showSlide(index) {
-            if (slides.length === 0) return;
-            
-            currentSlide = (index + slides.length) % slides.length;
-            
-            slides.forEach((slide, i) => {
-                slide.style.transform = `translateX(${100 * (i - currentSlide)}%)`;
-            });
-            
-            updateSlideButtons();
-        }
-
-        function updateSlideButtons() {
-            if (slides.length <= 1) {
-                prevBtn.disabled = true;
-                nextBtn.disabled = true;
-                toggleAutoplay.disabled = true;
-            } else {
-                prevBtn.disabled = false;
-                nextBtn.disabled = false;
-                toggleAutoplay.disabled = false;
-            }
-        }
-
-        function toggleSlideAutoplay() {
-            if (slides.length <= 1) return;
-            
-            if (isAutoplayOn) {
-                clearInterval(autoplayInterval);
-                autoplayInterval = null;
-                isAutoplayOn = false;
-                toggleAutoplay.innerHTML = '<i class="fas fa-play mr-1"></i> Autoplay';
-            } else {
-                isAutoplayOn = true;
-                toggleAutoplay.innerHTML = '<i class="fas fa-pause mr-1"></i> Pause';
-                autoplayInterval = setInterval(() => {
-                    showSlide(currentSlide + 1);
-                }, 3000);
-            }
-        }
-
-        function savePhotos() {
-            const photoUrls = [];
-            slides.forEach(slide => {
-                const img = slide.querySelector('img');
-                if (img && img.src) {
-                    photoUrls.push(img.src);
-                }
-            });
-            
-            saveData('birthdayPhotos', JSON.stringify(photoUrls));
-        }
-
-        function handleFileUpload(files) {
-            if (!files || files.length === 0) return;
-            
-            // Limit to 10 photos
-            const remainingSlots = 10 - slides.length;
-            if (remainingSlots <= 0) {
-                alert('You can only upload up to 10 photos!');
-                return;
-            }
-            
-            const filesToProcess = Array.from(files).slice(0, remainingSlots);
-            
-            filesToProcess.forEach(file => {
-                if (!file.type.match('image.*')) return;
-                
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    const photoUrl = e.target.result;
-                    addPhotoSlide(photoUrl);
-                    
-                    if (noPhotosMessage && slides.length > 0) {
-                        noPhotosMessage.classList.add('hidden');
-                    }
-                    
-                    if (slides.length === 1) {
-                        showSlide(0);
-                    }
-                    
-                    updateSlideButtons();
-                };
-                
-                reader.readAsDataURL(file);
-            });
-        }
-
-        // Event Listeners
-        document.addEventListener('DOMContentLoaded', () => {
-            // Initial setup
-            createBalloons();
-            createConfetti();
-            loadSavedData();
-
-            // Name input
-            nameInput.addEventListener('input', updateName);
-            nameInput.addEventListener('blur', updateName);
-
-            // Capybara click
-            capybaraContainer.addEventListener('click', showGiftPage);
-
-            // Back button
-            backToMain.addEventListener('click', showMainPage);
-
-            // Hidden heart
-            hiddenHeart.addEventListener('click', createHeartEffect);
-
-            // Music player
-            toggleMusic.addEventListener('click', () => {
-                if (audioPlayer.paused) {
-                    audioPlayer.play();
-                    musicIcon.classList.remove('fa-play');
-                    musicIcon.classList.add('fa-pause');
-                } else {
-                    audioPlayer.pause();
-                    musicIcon.classList.remove('fa-pause');
-                    musicIcon.classList.add('fa-play');
-                }
-            });
-
-            togglePlayerExpand.addEventListener('click', () => {
-                musicPlayer.classList.toggle('expanded');
-                playerExpandedContent.classList.toggle('hidden');
-                togglePlayerExpand.innerHTML = musicPlayer.classList.contains('expanded') 
-                    ? '<i class="fas fa-chevron-up"></i>' 
-                    : '<i class="fas fa-chevron-down"></i>';
-            });
-
-            volumeControl.addEventListener('input', () => {
-                audioPlayer.volume = volumeControl.value;
-            });
-
-            musicUpload.addEventListener('change', (e) => {
-                const file = e.target.files[0];
-                if (!file) return;
-                
-                if (file.size > 25 * 1024 * 1024) {
-                    alert('Please select an MP3 file under 25MB');
-                    return;
-                }
-                
-                if (!file.type.includes('audio')) {
-                    alert('Please select a valid audio file');
-                    return;
-                }
-
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    audioPlayer.src = e.target.result;
-                    document.getElementById('songTitle').textContent = file.name;
-                    audioPlayer.play();
-                    musicIcon.classList.remove('fa-play');
-                    musicIcon.classList.add('fa-pause');
-                };
-                reader.readAsDataURL(file);
-            });
-
-            // Birthday message
-            birthdayMessage.addEventListener('input', () => {
-                saveData('birthdayMessage', birthdayMessage.value);
-            });
-
-            // Photo slideshow
-            prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
-            nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
-            toggleAutoplay.addEventListener('click', toggleSlideAutoplay);
-
-            // Photo upload events
-            photoUpload.addEventListener('change', (e) => {
-                handleFileUpload(e.target.files);
-            });
-
-            uploadArea.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                uploadArea.classList.add('dragover');
-            });
-
-            uploadArea.addEventListener('dragleave', () => {
-                uploadArea.classList.remove('dragover');
-            });
-
-            uploadArea.addEventListener('drop', (e) => {
-                e.preventDefault();
-                uploadArea.classList.remove('dragover');
-                handleFileUpload(e.dataTransfer.files);
-            });
-
-            uploadArea.addEventListener('click', () => {
-                photoUpload.click();
-            });
-        });
-    </script>
+  <script>
+    // 🎊 Confetti generator
+    const confettiContainer = document.getElementById("confetti-container");
+    const colors = ["#ff9a9e", "#fad0c4", "#fbc2eb", "#a6c1ee", "#c9e8ff"];
+    for (let i = 0; i < 80; i++) {
+      const confetti = document.createElement("div");
+      confetti.classList.add("confetti");
+      confetti.style.left = Math.random() * 100 + "vw";
+      confetti.style.animationDuration = 4 + Math.random() * 3 + "s";
+      confetti.style.setProperty("--color", colors[Math.floor(Math.random() * colors.length)]);
+      confettiContainer.appendChild(confetti);
+    }
+  </script>
 </body>
 </html>
