@@ -1,0 +1,31 @@
+p{
+  background-color: red;
+  paddingL: 4px 16px;
+}
+
+/* If you use id = header */
+#header{
+  color: blue;
+  border: 2px solid black;
+}
+
+/*If you use class = header2 */
+.header2{
+  color: cyan;
+  border: 1px solid yellow;
+}
+
+/*You can also group multiple selectors (mainly id ko kura bhai rako xa) */
+#id1, #id2 {
+    color: red;
+    size: 20vh 35vw;
+  /*vh == Relative to the height of the device (View Height)
+    vw == Relative to the width of the device (View Width)
+    em == Relative to the font-size of the element
+  */
+}
+
+
+
+
+
